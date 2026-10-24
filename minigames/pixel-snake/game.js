@@ -205,4 +205,6 @@
   document.addEventListener("visibilitychange", () => { if (document.hidden) pauseWhenAway(); });
   window.addEventListener("blur", pauseWhenAway);
   syncUI();
+  action.disabled = false;
+  document.getElementById("startup-help").hidden = true;
 })();
