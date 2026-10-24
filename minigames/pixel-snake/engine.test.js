@@ -1,8 +1,12 @@
-"use strict";
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import { SnakeGame } from "./engine.js";
 
-const { test } = require("node:test");
-const assert = require("node:assert/strict");
-const { SnakeGame } = require("./engine.js");
+test("engine and mount API can be imported without a browser or global namespace", async () => {
+  const { mountPixelSnake } = await import("./game.js");
+  assert.equal(typeof mountPixelSnake, "function");
+  assert.equal(globalThis.PixelSnake, undefined);
+});
 
 test("a new game waits to start, moves one cell, and preserves its length", () => {
   const game = new SnakeGame({ random: () => 0 });

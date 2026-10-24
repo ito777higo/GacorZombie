@@ -1,14 +1,18 @@
-(() => {
-  "use strict";
+import { SnakeGame } from "./engine.js";
 
-  const { SnakeGame } = window.PixelSnake;
-  const game = new SnakeGame();
-  const canvas = document.getElementById("board");
+// Mount inside a host element or document; destroy() releases timers and listeners.
+export function mountPixelSnake(root = document, { game = new SnakeGame() } = {}) {
+  const ownerDocument = root.ownerDocument || root;
+  const view = ownerDocument.defaultView;
+  const events = new view.AbortController();
+  const find = id => root.querySelector(`#${id}`);
+  const listen = (target, type, handler) => target.addEventListener(type, handler, { signal: events.signal });
+  const canvas = find("board");
   const context = canvas.getContext("2d");
-  const overlay = document.getElementById("overlay");
-  const action = document.getElementById("action");
-  const pauseButton = document.getElementById("pause");
-  const paceButtons = [...document.querySelectorAll("[data-pace]")];
+  const overlay = find("overlay");
+  const action = find("action");
+  const pauseButton = find("pause");
+  const paceButtons = [...root.querySelectorAll("[data-pace]")];
   const storageKey = "gacor.pixel-snake.best.v1";
   const paces = { easy: 180, normal: 130, fast: 90 };
   let pace = "normal";
@@ -17,21 +21,21 @@
   let touchOrigin = null;
 
   try {
-    const stored = Number(localStorage.getItem(storageKey));
+    const stored = Number(view.localStorage.getItem(storageKey));
     if (Number.isSafeInteger(stored) && stored >= 0) best = stored;
   } catch { /* The game also works when browser storage is disabled. */ }
 
   function announce(text) {
-    document.getElementById("announcement").textContent = text;
+    find("announcement").textContent = text;
   }
 
   function updateScore() {
-    document.getElementById("score").textContent = String(game.score).padStart(3, "0");
+    find("score").textContent = String(game.score).padStart(3, "0");
     if (game.score > best) {
       best = game.score;
-      try { localStorage.setItem(storageKey, String(best)); } catch { /* Optional persistence. */ }
+      try { view.localStorage.setItem(storageKey, String(best)); } catch { /* Optional persistence. */ }
     }
-    document.getElementById("best").textContent = String(best).padStart(3, "0");
+    find("best").textContent = String(best).padStart(3, "0");
   }
 
   function draw() {
@@ -87,8 +91,8 @@
     overlay.hidden = running;
     paceButtons.forEach(button => { button.disabled = running || status === "paused"; });
     pauseButton.disabled = status !== "running" && status !== "paused";
-    document.getElementById("pause-icon").textContent = status === "paused" ? "▷" : "Ⅱ";
-    document.getElementById("pause-label").textContent = status === "paused" ? "继续游戏" : "暂停游戏";
+    find("pause-icon").textContent = status === "paused" ? "▷" : "Ⅱ";
+    find("pause-label").textContent = status === "paused" ? "继续游戏" : "暂停游戏";
     const states = {
       ready: ["LET'S PLAY", "READY?", "吃掉小果子，留意你的尾巴。", "开始游戏", "或按 Enter 开始"],
       paused: ["TAKE A BREATH", "PAUSED", "休息一下，小蛇等你回来。", "继续游戏", "或按空格继续"],
@@ -97,11 +101,11 @@
     };
     if (!running) {
       const [eyebrow, title, message, label, hint] = states[status];
-      document.getElementById("overlay-eyebrow").textContent = eyebrow;
-      document.getElementById("overlay-title").textContent = title;
-      document.getElementById("overlay-message").textContent = message;
-      action.replaceChildren(document.createTextNode(`${label} `), Object.assign(document.createElement("span"), { textContent: "↵" }));
-      document.getElementById("overlay-hint").textContent = hint;
+      find("overlay-eyebrow").textContent = eyebrow;
+      find("overlay-title").textContent = title;
+      find("overlay-message").textContent = message;
+      action.replaceChildren(ownerDocument.createTextNode(`${label} `), Object.assign(ownerDocument.createElement("span"), { textContent: "↵" }));
+      find("overlay-hint").textContent = hint;
       if (status === "over" || status === "won") announce(message);
     }
     updateScore();
@@ -144,14 +148,14 @@
     game.turn(direction);
   }
 
-  action.addEventListener("click", () => start());
-  pauseButton.addEventListener("click", togglePause);
-  document.getElementById("restart").addEventListener("click", () => start(true));
-  paceButtons.forEach(button => button.addEventListener("click", () => {
+  listen(action, "click", () => start());
+  listen(pauseButton, "click", togglePause);
+  listen(find("restart"), "click", () => start(true));
+  paceButtons.forEach(button => listen(button, "click", () => {
     if (game.status === "running" || game.status === "paused") return;
     pace = button.dataset.pace;
     paceButtons.forEach(option => option.setAttribute("aria-pressed", String(option === button)));
-    document.getElementById("pace-hint").textContent = {
+    find("pace-hint").textContent = {
       easy: "慢慢来，给自己留点转弯的时间。",
       normal: "适合来一局。吃得越多，速度越快。",
       fast: "手速挑战。每一个转弯都要提前想好。",
@@ -159,7 +163,8 @@
   }));
 
   const keyDirections = { ArrowUp: "up", ArrowRight: "right", ArrowDown: "down", ArrowLeft: "left", w: "up", d: "right", s: "down", a: "left" };
-  document.addEventListener("keydown", event => {
+  listen(ownerDocument, "keydown", event => {
+    if (!root.contains(ownerDocument.activeElement)) return;
     if (event.altKey || event.ctrlKey || event.metaKey || event.target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(event.target.tagName)) return;
     const key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
     if (keyDirections[key]) {
@@ -180,16 +185,16 @@
     }
   });
 
-  document.querySelectorAll("[data-direction]").forEach(button => {
-    button.addEventListener("click", () => move(button.dataset.direction));
+  root.querySelectorAll("[data-direction]").forEach(button => {
+    listen(button, "click", () => move(button.dataset.direction));
   });
 
-  canvas.addEventListener("pointerdown", event => {
+  listen(canvas, "pointerdown", event => {
     if (event.pointerType === "mouse") return;
     touchOrigin = { x: event.clientX, y: event.clientY, id: event.pointerId };
     canvas.setPointerCapture(event.pointerId);
   });
-  canvas.addEventListener("pointerup", event => {
+  listen(canvas, "pointerup", event => {
     if (!touchOrigin || touchOrigin.id !== event.pointerId) return;
     const dx = event.clientX - touchOrigin.x;
     const dy = event.clientY - touchOrigin.y;
@@ -197,14 +202,23 @@
     if (Math.max(Math.abs(dx), Math.abs(dy)) < 12) return;
     move(Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? "right" : "left") : (dy > 0 ? "down" : "up"));
   });
-  canvas.addEventListener("pointercancel", () => { touchOrigin = null; });
+  listen(canvas, "pointercancel", () => { touchOrigin = null; });
 
   function pauseWhenAway() {
     if (game.status === "running") togglePause();
   }
-  document.addEventListener("visibilitychange", () => { if (document.hidden) pauseWhenAway(); });
-  window.addEventListener("blur", pauseWhenAway);
+  listen(ownerDocument, "visibilitychange", () => { if (ownerDocument.hidden) pauseWhenAway(); });
+  listen(view, "blur", pauseWhenAway);
   syncUI();
   action.disabled = false;
-  document.getElementById("startup-help").hidden = true;
-})();
+  find("startup-help").hidden = true;
+
+  return {
+    game,
+    destroy() {
+      clearTimeout(timer);
+      game.pause();
+      events.abort();
+    },
+  };
+}

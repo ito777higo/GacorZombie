@@ -1,0 +1,24 @@
+{
+  "name": "@gacorzombie/pixel-snake",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.22.1",
+    "npm": "11.19.1"
+  },
+  "packageManager": "npm@11.19.1",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "node build-standalone.js && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "npm run test:unit && npm run test:browser",
+    "test:unit": "node --test engine.test.js",
+    "test:browser": "npm run build && PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright playwright test",
+    "test:install": "PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright playwright install chromium"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "vite": "8.3.5"
+  }
+}
