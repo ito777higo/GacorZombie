@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#eef0e5" />
+    <title>Pixel Snake · GacorZombie</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232b4637'/%3E%3Cpath d='M7 9h18v6H13v4h12v6H7V9' fill='%23c6dfa1'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="engine.js" defer></script>
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="masthead">
+        <a class="brand" href="./" aria-label="GacorZombie 像素贪吃蛇">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h12v6h6v12H9v-6H3V3zm6 6v6h6V9H9z" /></svg>
+          GACOR<span class="brand-divider">/</span><span class="brand-section">MINI GAMES</span>
+        </a>
+        <span class="edition"><span class="status-dot"></span> 小游戏实验室 · 001</span>
+      </header>
+
+      <main>
+        <div class="intro">
+          <div>
+            <p class="eyebrow">A LITTLE BREAK. A LITTLE GAME.</p>
+            <h1>PIXEL SNAKE<span class="title-square" aria-hidden="true"></span></h1>
+            <p class="subtitle">像素贪吃蛇 <span>／</span> 经典玩法，再吃一口。</p>
+          </div>
+          <span class="game-tag">经典街机 <span>↗</span></span>
+        </div>
+
+        <div class="game-layout">
+          <section class="console" aria-label="贪吃蛇游戏">
+            <div class="scoreboard">
+              <div class="score-item"><span class="score-label">SCORE <span>得分</span></span><strong id="score">000</strong></div>
+              <span class="screen-label"><span class="status-dot"></span> DOT MATRIX</span>
+              <div class="score-item best-score"><span class="score-label">BEST <span>最佳</span></span><strong id="best">000</strong></div>
+            </div>
+            <div class="screen" id="screen">
+              <canvas id="board" width="480" height="480" tabindex="0" aria-label="贪吃蛇棋盘，使用方向键或 WASD 控制。"></canvas>
+              <div class="overlay" id="overlay">
+                <div class="overlay-card">
+                  <div class="pixel-mark" aria-hidden="true">＋</div>
+                  <p class="overlay-eyebrow" id="overlay-eyebrow">LET'S PLAY</p>
+                  <h2 id="overlay-title">READY?</h2>
+                  <p id="overlay-message">吃掉小果子，留意你的尾巴。</p>
+                  <button id="action" class="primary-button" type="button">开始游戏 <span>↵</span></button>
+                  <span class="overlay-hint" id="overlay-hint">或按 Enter 开始</span>
+                </div>
+              </div>
+            </div>
+            <div class="console-footer"><span><i class="power-light"></i> 好好玩，慢慢长。</span><span>GZ — 001</span></div>
+          </section>
+
+          <aside class="sidebar" aria-label="游戏设置和操作说明">
+            <div class="sidebar-heading"><span class="section-number">01</span><h2>吃一口，长一格。</h2></div>
+            <p class="description">一条小蛇，一块像素世界。<br />收集果子，刷新自己的纪录。</p>
+
+            <div class="setting">
+              <div class="setting-label"><h3>游戏速度</h3><span>PACE</span></div>
+              <div class="pace-options" role="group" aria-label="游戏速度">
+                <button type="button" data-pace="easy" aria-pressed="false">悠闲</button>
+                <button type="button" data-pace="normal" aria-pressed="true">标准</button>
+                <button type="button" data-pace="fast" aria-pressed="false">挑战</button>
+              </div>
+              <p class="setting-hint" id="pace-hint">适合来一局。吃得越多，速度越快。</p>
+            </div>
+
+            <div class="controls-guide">
+              <div class="setting-label"><h3>操作指南</h3><span>CONTROLS</span></div>
+              <div class="control-row"><span><kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd><small> / WASD</small></span><span>移动</span></div>
+              <div class="control-row"><kbd class="wide-key">SPACE</kbd><span>暂停 / 继续</span></div>
+              <div class="control-row"><kbd>R</kbd><span>重新开始</span></div>
+            </div>
+
+            <div class="play-actions">
+              <button type="button" class="secondary-button" id="pause" disabled><span id="pause-icon">Ⅱ</span> <span id="pause-label">暂停游戏</span></button>
+              <button type="button" class="restart-button" id="restart" aria-label="重新开始" title="重新开始 (R)">↻</button>
+            </div>
+
+            <div class="touch-controls" role="group" aria-label="触屏方向键">
+              <button type="button" data-direction="up" aria-label="向上">↑</button>
+              <button type="button" data-direction="left" aria-label="向左">←</button>
+              <span class="dpad-center" aria-hidden="true">·</span>
+              <button type="button" data-direction="right" aria-label="向右">→</button>
+              <button type="button" data-direction="down" aria-label="向下">↓</button>
+            </div>
+            <p class="small-note"><span class="tiny-fruit" aria-hidden="true"></span> 每颗果子 +10 分 <span class="note-divider">·</span> 碰到边界或自己即结束</p>
+          </aside>
+        </div>
+        <p class="sr-only" id="announcement" role="status" aria-live="polite"></p>
+      </main>
+
+      <footer class="page-footer"><span>GACORZOMBIE <span class="footer-cross">＋</span> LITTLE GAMES, GOOD TIMES.</span><span>无需安装 · 即刻开玩</span></footer>
+    </div>
+  </body>
+</html>
