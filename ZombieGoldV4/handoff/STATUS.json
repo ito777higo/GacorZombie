@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "status": "awaiting_mobile_source_upload",
+  "source_in_this_commit": false,
+  "primary_received": false,
+  "repository": "ito777higo/GacorZombie",
+  "handoff_branch": "codex/mobile-zombiegold-handoff",
+  "reported_version": "V4.1",
+  "source_directory_on_mobile": "/Users/admin/Documents/Codex/GacorZombie/ZombieGoldV4",
+  "source_directory_in_repository": "ZombieGoldV4",
+  "mobile_thread_id": "01a16eda-ab79-7ad3-b331-3f5f35acfddc",
+  "primary_thread_id": "01a16ea7-aa0f-74c2-9c6e-7a3bb6e40e04",
+  "coordinator_thread_id": "01a16e6d-2b20-77c3-aea9-b9c4b822a0ab",
+  "evidence_basis": "mobile_task_execution_records_not_a_new_source_checkout",
+  "reported_verification": {
+    "v4_full_level_wins": 5,
+    "v4_level_count": 5,
+    "v41_logic_groups": 8,
+    "v41_logic_checks": 642,
+    "v41_real_input_first_level_passed": true,
+    "v41_lab_unlock_and_persistence_passed": true,
+    "v41_all_five_levels_replayed_after_hotfix": null,
+    "v41_package_matches_source_reported": true,
+    "hardware_vibration_verified": false
+  },
+  "reported_mobile_archive": {
+    "path": "releases/zombie-gold-web-v4.1-interaction-fix.zip",
+    "files": 286,
+    "bytes": 14939051,
+    "sha256": "1a5437d5242b0792433825fd2e8369d2b625438e5a17a50f825ce40f1e37a4c0"
+  },
+  "next_actions": [
+    "mobile_publish_source_assets_tests_and_sha256_manifest",
+    "coordinator_fetch_and_verify_exact_uploaded_commit",
+    "primary_read_same_commit_and_run_independently"
+  ]
+}

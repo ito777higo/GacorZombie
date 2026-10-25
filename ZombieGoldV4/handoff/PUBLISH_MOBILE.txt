@@ -1,0 +1,17 @@
+发给移动电脑本地任务「验证一路爆金币 V9.5」的执行指令：
+
+用户现在已授权把移动电脑现有成果上传 GitHub，并交接给主力电脑。
+请发布当前 ZombieGoldV4 的 V4.1 完整工程，完成发布核验；本轮不继续开发玩法。
+
+1. 先读取主持任务 01a16e6d-2b20-77c3-aea9-b9c4b822a0ab 的最新交接要求，以及 GitHub 分支 codex/mobile-zombiegold-handoff 下 ZombieGoldV4/handoff/TRANSFER.txt。
+2. 源码以 /Users/admin/Documents/Codex/GacorZombie/ZombieGoldV4 当前实际文件为准，包含 V4.1 车门、实验室、配色和 Lightless Dawn 配乐修复。重新检查本机状态，保存当前成果，完整保留 inbox/GateFish、inbox/ZombieGold 和旧版目录。
+3. 连接现有仓库 https://github.com/ito777higo/GacorZombie。在交接分支 codex/mobile-zombiegold-handoff 发布，不覆盖贪吃蛇分支，不合并 main，不强推。主目录若不是 Git 仓库，可使用临时克隆完成发布，不挪走或覆盖原件。若分支已有主持交接材料，先读取最新远端基线并保留这些材料。
+4. 仓库内只加入 ZombieGoldV4/ 中完整可运行的现行源码、必需素材、工具与测试。保留现有素材与配乐许可文件。不上传 .git、凭据、浏览器个人数据、node_modules、缓存或临时解压副本；不把旧版本包当成当前源码。不新增或重写 README。
+5. 将 verification/zombiegold-v4 和 verification/zombiegold-v4-hotfix 中本次必需的测试脚本、结果与少量关键截图放入 ZombieGoldV4/handoff/evidence/，保留原件。记录实际启动、依赖和测试方式；消除验证脚本对 /Users/admin 绝对路径的依赖，保持游戏行为不变。
+6. 在 ZombieGoldV4/handoff/SOURCE_MANIFEST.json 记录发布源码和素材的相对路径、字节数、SHA-256。清单不包含自身，且与交接状态材料分开。核对所有必需模块、Spine/模型/贴图和当前音频确实加入发布。
+7. 运行已有回归和真实输入检查。至少重验第一关实际开门救人、实验室解锁/进入第五关、刷新后的解锁状态和资源加载。将真实输入测试、模拟器测试、跳过项分别报告；沿用 V4.1 的具体结果，不冒称五关全流程重新验收。测试用隔离浏览器存档。
+8. 更新 STATUS.json，只有提交中实际包含源码后才把 source_in_this_commit 设为 true，并将 status 改为 ready_for_primary_validation。此时 primary_received 仍为 false。记录验证结果、已知问题和实际运行命令，完整提交并推送该分支。使用已有 GitHub 登录/连接器；如命令行 HTTPS 凭据不可用，沿用已有连接器认证方式，不索取或输出 token 值。
+9. 推送后重新读取远端提交，在独立目录取得该版本并与 SOURCE_MANIFEST.json 核对，确认远端源码与本机本次发布内容一致；验证可启动并加载必需资源。
+10. 回复：仓库、分支、完整提交 SHA、发布文件范围、清单校验结果、测试与遗留问题。只有这些已完成，才能报告“移动机工程已安全交接到 GitHub，可以关机”。如果访问或上传受阻，报告具体阻塞，保留所有文件，不声称完成。
+
+将这个最终结果交回主持任务，主力机随后以同一个完整提交 SHA 接手。
