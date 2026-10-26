@@ -1,0 +1,82 @@
+GacorZombie 本地执行器：第一阶段（固定的只读任务）
+
+实际能力
+  云端把 JSON 任务提交到 codex/device-bridge 分支。
+  Mac 的用户 LaunchAgent 每 20 秒读取一次，按 primary/mobile 领取，提交真实 JSON 回执。
+  无待办时不调用模型；当前全部任务都不调用模型，也不需要 OpenAI API Key。
+  不会向另一个聊天窗口发消息，不会自动唤醒本主持对话。
+  主持对话活跃时读取回执；对话关闭时，本地执行器仍可处理已经排队的任务。
+  第一阶段只支持 inspect_local 和 check_handoff，尚未接入 Codex 编码或原工程发布。
+  因此安装本执行器不等于原游戏完成交接，检查成功也不等于游戏试玩成功。
+
+文件位置与授权
+  本仓库的全部实现、测试和队列均在 ZombieGoldV4/handoff/bridge/。
+  不改 main、不合并其他分支、不写游戏源码、不处理游戏存档、不修改未提交改动。
+  安装器把程序、独立 Git 传输库、日志和配置存到：
+    ~/Library/Application Support/GacorZombieBridge/<device>/
+  用户级启动项位于：
+    ~/Library/LaunchAgents/com.gacorzombie.bridge.<device>.plist
+  不需要 sudo，不会把凭据存入仓库。
+  使用本机已有 GitHub Git 读写授权；Codex 应用内 GitHub 连接器的授权不一定能供 Git 使用。
+  若提示认证失败，在本机完成 gh auth login 和 gh auth setup-git 后重试。
+  不要把令牌、私钥或 Git 凭据粘贴到聊天或 JSON 配置中。
+
+每台 Mac 的一次性安装
+  先用 Git 克隆本分支到独立的临时目录（不要覆盖现有项目）：
+    installer_dir=$(mktemp -d "${TMPDIR:-/tmp}/gacorzombie-bridge.XXXXXX")
+    git clone --depth 1 --single-branch --branch codex/device-bridge https://github.com/ito777higo/GacorZombie.git "$installer_dir/source"
+
+  移动电脑：
+    python3 "$installer_dir/source/ZombieGoldV4/handoff/bridge/install.py" --device mobile --project /Users/admin/Documents/Codex/GacorZombie
+
+  主力电脑：
+    python3 "$installer_dir/source/ZombieGoldV4/handoff/bridge/install.py" --device primary --project /Users/ito/Documents/CodexWorks/GacorZombie
+
+  以上分别在对应 Mac 的终端执行，不要在云端终端执行。
+  安装前检查目录确实存在；不自动克隆、切换或初始化该游戏目录。
+  安装器先验证 Git 读写、完成一次本机检查并上传回执，再注册启动项。
+  终端出现 Installed 后，主持任务还应读取 queue/workers 和 queue/receipts 核对。
+  重复安装保留原配置；同一 device 不允许被两个 installation_id 抢占。
+  需要停用时，执行安装器最后打印的 launchctl bootout 命令。
+  用户登录且电脑唤醒时运行；睡眠、关机、退出登录时不会执行任务。
+  离线待办保持 queued；claimed_unfinished 只能表示已经领取且尚无回执，不能据此说仍在运行。
+
+第一阶段验收
+  1. 分别看到 mobile 和 primary 的 Darwin 注册记录与安装检查回执。
+  2. 在主持任务里各提交一个新的 inspect_local，用户不再操作两台 Mac。
+  3. 在 queue/receipts 取得两台电脑的真实目录、平台、Git HEAD、未提交标记、源码存在性。
+  4. 两个回执目标和 installation_id 对应正确；再次轮询不重复执行。
+  云端或测试临时目录得到的回执只能证明传输/执行实现，不能替代两台 Mac 的上述验收。
+
+主持任务命令（配置和队列传输缓存存放在工程外）
+  配置 JSON 字段：
+    schema_version: 1
+    remote: https://github.com/ito777higo/GacorZombie.git
+    branch: codex/device-bridge
+    device: coordinator
+    installation_id: 一个独立的 32 位小写十六进制 UUID
+    state_dir: 工程目录外的绝对路径
+    project_dir: 当前实际工程目录绝对路径
+
+  python3 bridge.py --config /absolute/config.json enqueue --target mobile --id mobile-probe-001
+  python3 bridge.py --config /absolute/config.json enqueue --target primary --id primary-probe-001
+  python3 bridge.py --config /absolute/config.json status
+
+  任务 ID 不可覆盖。再次安排检查应使用新 ID。
+  check_handoff 另传 --action check_handoff --source-commit <40位完整提交SHA>。
+  它只核对指定提交位于交接分支历史，且入口、主要源码、素材和清单存在。
+  它不执行下载的游戏代码，不验证美术渲染/清单哈希/玩法，缺少文件时返回 blocked。
+  inspect_local 的 succeeded 意思是检查已执行，game_source_present 可以为 false。
+
+一致性与恢复
+  队列通过普通非强制 Git push 做并发比较与重试，不覆盖其他设备的新提交。
+  claim 绑定安装 ID，本机 flock 阻止重复实例；完成回执不可覆盖。
+  回执先写本机 outbox，网络恢复后直接补传，不重做已保存结果。
+  崩溃发生在结果保存前时，允许恢复执行只读检查；不承诺任何写入任务的 exactly-once。
+  网络故障记入 worker-error.log。注册记录每五分钟更新，仅表示最后联系时间。
+  只有本机配置的固定工程目录可被检查；队列不接受任意 shell、Prompt 或自定义路径。
+
+验证实现
+  python3 -m unittest discover -s ZombieGoldV4/handoff/bridge -p 'test_bridge.py' -v
+  测试用临时 Git 裸仓库验证真正的提交/推送/领取/回执、并发与恢复。
+  两台真实 Mac 的 LaunchAgent、Git 登录和唤醒状态需要在对应电脑验收。
