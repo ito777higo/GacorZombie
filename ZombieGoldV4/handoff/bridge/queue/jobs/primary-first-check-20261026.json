@@ -1,0 +1,7 @@
+{
+  "action": "inspect_local",
+  "created_at": "2026-10-26T14:50:30+00:00",
+  "id": "primary-first-check-20261026",
+  "schema_version": 1,
+  "target": "primary"
+}
