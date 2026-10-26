@@ -7,6 +7,8 @@
 2. 源码以 /Users/admin/Documents/Codex/GacorZombie/ZombieGoldV4 当前实际文件为准，包含 V4.1 车门、实验室、配色和 Lightless Dawn 配乐修复。重新检查本机状态，保存当前成果，完整保留 inbox/GateFish、inbox/ZombieGold 和旧版目录。
 3. 连接现有仓库 https://github.com/ito777higo/GacorZombie。在交接分支 codex/mobile-zombiegold-handoff 发布，不覆盖贪吃蛇分支，不合并 main，不强推。主目录若不是 Git 仓库，可使用临时克隆完成发布，不挪走或覆盖原件。若分支已有主持交接材料，先读取最新远端基线并保留这些材料。
 4. 仓库内只加入 ZombieGoldV4/ 中完整可运行的现行源码、必需素材、工具与测试。保留现有素材与配乐许可文件。不上传 .git、凭据、浏览器个人数据、node_modules、缓存或临时解压副本；不把旧版本包当成当前源码。不新增或重写 README。
+4a. 检查目录外资源引用：HTML、CSS、JS/import map、动态资源清单、Spine atlas 的贴图页、GLTF 的 buffer/image、音频与字体。实际从 inbox、父目录或本机绝对路径读取的必需资源也必须交付，必要时只修正资源相对路径。固定必需的外部依赖版本并保留许可。不得用方块、占位模型或新素材代替缺失的原美术。
+4b. 先记录原版地图、首关战场和救援交互的参考截图。发布后在独立目录与全新浏览器上下文运行，确认没有借用旧缓存或目录外本机文件，实际画面仍使用相同的原模型、贴图和动画；将参考图与接收验收所需证据放入交接目录。
 5. 将 verification/zombiegold-v4 和 verification/zombiegold-v4-hotfix 中本次必需的测试脚本、结果与少量关键截图放入 ZombieGoldV4/handoff/evidence/，保留原件。记录实际启动、依赖和测试方式；消除验证脚本对 /Users/admin 绝对路径的依赖，保持游戏行为不变。
 6. 在 ZombieGoldV4/handoff/SOURCE_MANIFEST.json 记录发布源码和素材的相对路径、字节数、SHA-256。清单不包含自身，且与交接状态材料分开。核对所有必需模块、Spine/模型/贴图和当前音频确实加入发布。
 7. 运行已有回归和真实输入检查。至少重验第一关实际开门救人、实验室解锁/进入第五关、刷新后的解锁状态和资源加载。将真实输入测试、模拟器测试、跳过项分别报告；沿用 V4.1 的具体结果，不冒称五关全流程重新验收。测试用隔离浏览器存档。
