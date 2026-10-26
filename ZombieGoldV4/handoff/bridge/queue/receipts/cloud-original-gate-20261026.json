@@ -1,0 +1,24 @@
+{
+  "action": "check_handoff",
+  "device": "cloud-smoke",
+  "finished_at": "2026-10-26T14:50:42+00:00",
+  "installation_id": "ab9c3c722d6b461c876aa1a05408c909",
+  "job_id": "cloud-original-gate-20261026",
+  "result": {
+    "asset_files": 0,
+    "gameplay_verified": false,
+    "missing": [
+      "ZombieGoldV4/index.html",
+      "ZombieGoldV4/src/main.js",
+      "ZombieGoldV4/src/game.js",
+      "ZombieGoldV4/handoff/SOURCE_MANIFEST.json",
+      "ZombieGoldV4/assets/"
+    ],
+    "original_art_verified": false,
+    "scope": "File presence only; does not verify manifest hashes, rendering, or gameplay",
+    "source_commit": "6f391dfa21da19cf9044360d40f193ed68f9b1ee"
+  },
+  "schema_version": 1,
+  "started_at": "2026-10-26T14:50:37+00:00",
+  "state": "blocked"
+}
