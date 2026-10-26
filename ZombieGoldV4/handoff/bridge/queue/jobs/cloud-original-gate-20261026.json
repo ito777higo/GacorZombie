@@ -1,0 +1,8 @@
+{
+  "action": "check_handoff",
+  "created_at": "2026-10-26T14:50:24+00:00",
+  "id": "cloud-original-gate-20261026",
+  "schema_version": 1,
+  "source_commit": "6f391dfa21da19cf9044360d40f193ed68f9b1ee",
+  "target": "cloud-smoke"
+}
