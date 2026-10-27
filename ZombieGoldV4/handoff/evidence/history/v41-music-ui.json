@@ -1,0 +1,34 @@
+{
+  "audio": {
+    "state": {
+      "ctx": "running",
+      "mode": "run",
+      "loaded": true,
+      "playing": true,
+      "failed": false,
+      "url": "assets/audio/bgm_lightless_dawn_demo.mp3",
+      "duration": 80.01304166666667,
+      "loopStart": 0,
+      "loopEnd": 80,
+      "vol": 0.223
+    },
+    "meter": {
+      "sfx": {
+        "rms": -180,
+        "peak": -180
+      },
+      "all": {
+        "rms": -180,
+        "peak": -180
+      }
+    }
+  },
+  "colors": {
+    "menu": "linear-gradient(rgb(94, 108, 79), rgb(48, 63, 49))",
+    "progress": "linear-gradient(90deg, rgb(133, 141, 81), rgb(196, 178, 119))",
+    "squad": "rgba(53, 73, 50, 0.94)"
+  },
+  "pass": true,
+  "errors": [],
+  "http": []
+}

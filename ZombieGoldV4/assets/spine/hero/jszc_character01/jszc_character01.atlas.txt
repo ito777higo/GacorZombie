@@ -1,0 +1,167 @@
+
+jszc_character01.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+L_foot
+  rotate: true
+  xy: 15, 88
+  size: 21, 17
+  orig: 21, 17
+  offset: 0, 0
+  index: -1
+L_leg
+  rotate: false
+  xy: 229, 227
+  size: 25, 27
+  orig: 25, 27
+  offset: 0, 0
+  index: -1
+L_thigh
+  rotate: false
+  xy: 82, 125
+  size: 34, 26
+  orig: 34, 26
+  offset: 0, 0
+  index: -1
+R_foot
+  rotate: true
+  xy: 21, 2
+  size: 15, 14
+  orig: 15, 14
+  offset: 0, 0
+  index: -1
+R_leg
+  rotate: false
+  xy: 2, 2
+  size: 17, 15
+  orig: 17, 15
+  offset: 0, 0
+  index: -1
+R_thigh
+  rotate: true
+  xy: 166, 141
+  size: 16, 20
+  orig: 16, 20
+  offset: 0, 0
+  index: -1
+arm
+  rotate: true
+  xy: 118, 113
+  size: 30, 37
+  orig: 30, 37
+  offset: 0, 0
+  index: -1
+armor
+  rotate: true
+  xy: 229, 202
+  size: 23, 25
+  orig: 23, 25
+  offset: 0, 0
+  index: -1
+body
+  rotate: true
+  xy: 170, 159
+  size: 33, 40
+  orig: 33, 40
+  offset: 0, 0
+  index: -1
+cloak
+  rotate: true
+  xy: 170, 194
+  size: 33, 57
+  orig: 33, 57
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 118, 181
+  size: 50, 46
+  orig: 50, 46
+  offset: 0, 0
+  index: -1
+pipe1
+  rotate: false
+  xy: 241, 177
+  size: 13, 23
+  orig: 13, 23
+  offset: 0, 0
+  index: -1
+pipe2
+  rotate: true
+  xy: 2, 19
+  size: 24, 23
+  orig: 24, 23
+  offset: 0, 0
+  index: -1
+scarf
+  rotate: false
+  xy: 118, 145
+  size: 46, 34
+  orig: 46, 34
+  offset: 0, 0
+  index: -1
+shadow
+  rotate: true
+  xy: 2, 74
+  size: 64, 11
+  orig: 64, 11
+  offset: 0, 0
+  index: -1
+upper
+  rotate: false
+  xy: 212, 165
+  size: 27, 27
+  orig: 27, 27
+  offset: 0, 0
+  index: -1
+upper1
+  rotate: true
+  xy: 2, 45
+  size: 27, 22
+  orig: 27, 22
+  offset: 0, 0
+  index: -1
+weapon1
+  rotate: true
+  xy: 118, 229
+  size: 25, 109
+  orig: 25, 109
+  offset: 0, 0
+  index: -1
+weapon2
+  rotate: false
+  xy: 28, 144
+  size: 25, 110
+  orig: 25, 110
+  offset: 0, 0
+  index: -1
+weapon3
+  rotate: false
+  xy: 55, 144
+  size: 25, 110
+  orig: 25, 110
+  offset: 0, 0
+  index: -1
+weapon4
+  rotate: false
+  xy: 82, 153
+  size: 34, 101
+  orig: 34, 101
+  offset: 0, 0
+  index: -1
+weapon5
+  rotate: false
+  xy: 2, 140
+  size: 24, 114
+  orig: 24, 114
+  offset: 0, 0
+  index: -1
+zidan
+  rotate: false
+  xy: 15, 111
+  size: 10, 27
+  orig: 10, 27
+  offset: 0, 0
+  index: -1

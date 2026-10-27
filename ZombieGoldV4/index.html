@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>断线公路 · 17号车队 V4.1</title>
+<link rel="icon" href="assets/ui/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="vendor/fonts/fonts.css">
+<link rel="stylesheet" href="styles.css?v=4.1">
+</head>
+<body>
+<div id="app">
+  <div id="frame">
+    <canvas id="gl" aria-label="游戏画面"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="hurt-flash" id="hurtFlash" aria-hidden="true"></div>
+    <div id="labels" aria-hidden="true"></div>
+    <div id="floaters" aria-hidden="true"></div>
+
+    <div id="hud">
+      <div class="hud-top">
+        <button class="btn-round" id="btnMenu" type="button" aria-label="关卡地图">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <button class="speed-btn" id="btnSpeed" type="button" aria-label="游戏速度 ×1">×1</button>
+        <div class="lvl-badge" id="lvlBadge"><b id="lvlNum">1-1</b><span id="lvlName">陆地</span></div>
+        <div class="hud-right">
+          <div class="wallet" id="wallet"><i class="ico-coin"></i><b id="walletNum">0</b></div>
+        </div>
+      </div>
+      <div class="skills" id="skills" hidden></div>
+      <div class="callout" id="callout" hidden></div>
+      <div class="run-progress" id="runProgress">
+        <div class="rp-track"><div class="rp-fill" id="rpFill"></div></div>
+        <i class="rp-end" id="rpEnd"></i>
+      </div>
+      <div class="foes" id="foes" hidden></div>
+      <div class="boss-bar" id="bossBar" hidden>
+        <div class="bb-head"><div class="bb-name" id="bbName">屠夫</div><em class="bb-pay" id="bbPay" hidden></em></div>
+        <div class="bb-track"><div class="bb-lag" id="bbLag"></div><div class="bb-fill" id="bbFill"></div><b id="bbNum"></b></div>
+      </div>
+      <div class="session" id="session" hidden>
+        <div class="ss-timer" id="ssTimer">0:00</div>
+        <div class="ss-net"><span>本场</span><b id="ssNet">+0</b></div>
+      </div>
+      <div class="bonus-hud" id="bonusHud" hidden></div>
+      <div class="fin-hud" id="finHud" hidden></div>
+      <div class="crit-bar" id="critBar" hidden></div>
+      <div class="chapter-card" id="chapterCard" hidden></div>
+      <div class="banner" id="banner" hidden></div>
+      <div class="drag-hint" id="dragHint" hidden><em class="dh-arrow"></em><i></i><span>左右拖动</span></div>
+      <div class="teach" id="teach" hidden></div>
+      <div class="bet-toast" id="betToast" hidden></div>
+      <div class="fish-tools" id="fishTools" hidden>
+        <div class="fish-items" id="fishItems"></div>
+        <div class="ft-row"><div class="charge"><i id="chargeFill"></i><span id="chargeTxt">技能 0/30</span></div>
+        <button class="btn-chip laser" id="btnLaser" type="button" disabled><b>激光</b><span>全屏</span></button></div>
+      </div>
+      <div class="fish-bar" id="fishBar" hidden>
+        <button class="btn-chip" id="btnAuto" type="button"><b>自动</b><span>锁定大怪</span></button>
+        <div class="bet" id="betBox">
+          <button class="bet-step" id="betDown" type="button" aria-label="降低炮倍">−</button>
+          <div class="bet-val"><span>炮倍</span><b id="betNum">1K</b><em id="betCap">1 场 · 1K～20K</em></div>
+          <button class="bet-step" id="betUp" type="button" aria-label="提高炮倍">+</button>
+        </div>
+        <button class="btn-chip gold" id="btnNet" type="button" hidden><b>收工</b><span id="netSub">结算本场</span></button>
+      </div>
+      <div class="broke" id="broke" hidden>
+        <span>金币不够开炮了</span>
+        <button class="btn btn-yellow" id="brokeRun" type="button">去跑一关攒金币</button>
+        <button class="btn btn-dark" id="btnRefill" type="button">领补给 +50,000（原型）</button>
+      </div>
+    </div>
+
+    <div class="ov" id="ovWheel" hidden></div>
+    <div class="ov" id="ovWin" hidden></div>
+    <div class="ov ov-sp" id="ovChest" hidden></div>
+    <div class="ov ov-sp" id="ovLion" hidden></div>
+    <div class="ov" id="ovResult" hidden></div>
+    <div class="ov ov-map" id="ovMap" hidden></div>
+    <div class="ov journey-lab" id="mapSheet" hidden></div>
+    <div class="ov" id="ovPause" hidden>
+      <div class="panel pause">
+        <h2>已暂停</h2>
+        <button class="btn btn-yellow" id="btnResume" type="button">继续</button>
+      </div>
+    </div>
+    <div class="prompt-card" id="promptCard" hidden></div>
+    <div class="ov ov-boot" id="ovBoot">
+      <div class="boot-mark">末日突围 · 生存版</div>
+      <div class="boot-sub" id="bootSub">加载中</div>
+    </div>
+  </div>
+</div>
+<script src="vendor/spine-3.6/spine-webgl.js"></script>
+<script type="module" src="src/main.js?v=4.1"></script>
+</body>
+</html>

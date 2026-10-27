@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>素材预览</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #20242c; color: #dde; font: 13px/1.45 system-ui, sans-serif; }
+  canvas { position: fixed; inset: 0; display: block; width: 100%; height: 100%; }
+  #info { position: fixed; left: 8px; top: 8px; right: 8px; background: rgba(0,0,0,.6); padding: 8px 10px; border-radius: 8px; }
+  #info button { margin: 4px 4px 0 0; font: inherit; padding: 3px 8px; border-radius: 6px; border: 0; background: #3a4150; color: #fff; }
+  #info a, #list a { color: #9fd0ff; }
+  #list { position: fixed; left: 8px; right: 8px; top: 56px; bottom: 8px; overflow: auto; background: rgba(20,22,28,.94); border-radius: 8px; padding: 6px 10px; }
+  #list .row { display: block; padding: 7px 0; border-bottom: 1px solid #333a46; text-decoration: none; color: #dde; }
+  #list .row b { display: block; font-family: ui-monospace, monospace; color: #fff; }
+  #list .row span { color: #ffd38a; }
+  #list .row small { display: block; color: #8a93a3; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="info">加载中…</div>
+<div id="list" hidden></div>
+<script src="../vendor/spine-3.6/spine-webgl.js"></script>
+<script type="module" src="spine3d.js"></script>
+</body>
+</html>

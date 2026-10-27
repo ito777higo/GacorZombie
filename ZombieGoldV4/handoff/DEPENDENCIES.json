@@ -1,0 +1,51 @@
+{
+  "description": "Same dependency versions and font families, bundled; only resource locations changed.",
+  "files": [
+    {
+      "path": "vendor/fonts/LilitaOne-Regular.ttf",
+      "url": "https://fonts.gstatic.com/s/lilitaone/v17/i7dPIFZ9Zz-WBtRtedDbUEY.ttf",
+      "bytes": 26332,
+      "sha256": "26ad0d77404141ff7af714353cdf23c980841829dd270fc26e6c2dfcf654bd6d"
+    },
+    {
+      "path": "vendor/fonts/NotoSansSC-Bold.ttf",
+      "url": "https://fonts.gstatic.com/s/notosanssc/v41/k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaGzjCnYw.ttf",
+      "bytes": 10530408,
+      "sha256": "0066a522a1ac007c1d72bc4fccb114f80ff7294641c78cead9715bd14d43b9ea"
+    },
+    {
+      "path": "vendor/fonts/NotoSansSC-Black.ttf",
+      "url": "https://fonts.gstatic.com/s/notosanssc/v41/k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaG3bCnYw.ttf",
+      "bytes": 10521684,
+      "sha256": "f6a468a9a7270bbf913530a726f6762ba641bbad28183804568be92a4b6736e2"
+    },
+    {
+      "path": "vendor/three-0.160.0/three.module.js",
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "bytes": 1272972,
+      "sha256": "76dea8151bc9352aef3528b4262e249b2604f62543828328db978d060d61a495"
+    },
+    {
+      "path": "vendor/three-0.160.0/LICENSE",
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/LICENSE",
+      "bytes": 1081,
+      "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
+    },
+    {
+      "path": "vendor/fonts/LilitaOne-OFL.txt",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/lilitaone/OFL.txt",
+      "bytes": 4392,
+      "sha256": "255d5debbb80eb2ea762644311f266a279e8778f00156655a516e2b7781a63e1"
+    },
+    {
+      "path": "vendor/fonts/NotoSansSC-OFL.txt",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosanssc/OFL.txt",
+      "bytes": 4388,
+      "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9"
+    }
+  ],
+  "optional_network": [
+    "Music source and license attribution hyperlinks, not runtime downloads"
+  ],
+  "runtime_network_required": false
+}

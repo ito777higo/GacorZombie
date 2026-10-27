@@ -1,0 +1,13 @@
+{
+  "scope": "V4.1 small interaction, UI, lab and existing-music fixes",
+  "logicGroups": 8,
+  "logicChecks": 642,
+  "logicPass": true,
+  "playerRealMouseKeyboardPass": true,
+  "labUnlockAndEnterLastPass": true,
+  "buttonSurvivesFrames": true,
+  "existingMusicPlaying": true,
+  "packageMatchesSource": true,
+  "pageErrors": [],
+  "allPass": true
+}

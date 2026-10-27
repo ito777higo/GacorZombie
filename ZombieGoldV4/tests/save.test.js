@@ -1,0 +1,22 @@
+import { check, eq, done } from './lib.js';
+import { save, loadSave, persist, resetSave } from '../src/platform/save.js';
+
+const stored = new Map();
+globalThis.localStorage = { getItem: k => stored.get(k) || null, setItem: (k, v) => stored.set(k, v) };
+save.wallet = 12345; save.items = { bullet: 2 }; save.unlockAll = true; save.lobbyLv = 4; save.lab = { release: true };
+persist();
+eq(JSON.parse(stored.get('zombie-gold-journey-v4')).wallet, 12345, 'uses own save key');
+check(!stored.has('zombie-gold-survival-v2'), 'does not touch version two');
+check(!stored.has('zombie-gold-v1'), 'does not touch version one');
+check(!stored.has('yilu-baofen-v4'), 'does not touch original game');
+save.wallet = 0; loadSave();
+eq(save.wallet, 12345, 'restores saved wallet');
+resetSave();
+eq(save.wallet, 0, 'reset wallet');
+eq(save.next, 0, 'reset progress');
+for (const k of ['items', 'unlockAll', 'lobbyLv', 'lab']) check(!(k in save), `reset removes ${k}`);
+eq(JSON.parse(stored.get('zombie-gold-journey-v4')).unlockAll, undefined, 'reset commits clean save');
+globalThis.localStorage = { setItem() { throw new Error('storage blocked'); }, getItem() { throw new Error('storage blocked'); } };
+persist(); loadSave();
+check(true, 'blocked storage does not crash');
+done('save');

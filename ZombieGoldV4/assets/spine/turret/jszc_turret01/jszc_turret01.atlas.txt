@@ -1,0 +1,20 @@
+
+jszc_turret01.png
+size: 128,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+L_hand
+  rotate: false
+  xy: 2, 2
+  size: 38, 47
+  orig: 38, 47
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 2, 51
+  size: 52, 55
+  orig: 52, 55
+  offset: 0, 0
+  index: -1

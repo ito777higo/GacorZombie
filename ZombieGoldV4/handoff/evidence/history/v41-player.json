@@ -1,0 +1,44 @@
+{
+  "unlock": {
+    "unlocked": true,
+    "disabled": 0
+  },
+  "last": "4-1",
+  "clicked": {
+    "searching": true
+  },
+  "finish": {
+    "state": "result",
+    "phase": "done",
+    "outcome": {
+      "win": true,
+      "items": [
+        {
+          "type": "wire",
+          "quest": false,
+          "id": "2-bus-1"
+        }
+      ],
+      "delivered": [
+        {
+          "type": "photo",
+          "quest": true,
+          "id": "2-bus-0"
+        }
+      ],
+      "value": 180,
+      "people": 3,
+      "bounty": 150,
+      "parts": 0,
+      "story": "阿岚扶着乘客上车：谢谢。伤口需要药，前面的服务区有间诊所。",
+      "scene": "highway"
+    },
+    "showing": true
+  },
+  "persisted": {
+    "unlockAll": true,
+    "disabled": 0
+  },
+  "pass": true,
+  "errors": []
+}

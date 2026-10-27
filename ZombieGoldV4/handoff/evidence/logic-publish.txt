@@ -1,0 +1,28 @@
+== tests/campaign.test.js
+ok campaign (57 checks)
+== tests/cast.test.js
+  49 skeletons in the catalog, 22 zombie types, 4 level bosses, 0 mini-bosses checked
+ok cast (322 checks)
+== tests/fishsim.test.js
+  fishing 90 s: 383 shots, 128 kills, spent 646000, won 2994000, events {"bet":1,"shoot":383,"net":625,"catch":128,"partnerCatch":31,"sharkIn":2,"chargeFull":12,"laser":12,"specialIn":7,"chain":2,"bossIn":2,"special":4,"tide":2,"magicIn":1,"bossOut":1,"magicBurst":1,"critStart":1,"critEnd":1}
+  bonus 400 shells: ended true after 8.6 s, won 981109, parts {"fish":241909,"lucky":81903,"dragon":256000,"rain":0,"special":224000,"egg":259200}
+ok fishsim (14 checks)
+== tests/journey.test.js
+ok journey (50 checks)
+== tests/purity.test.js
+  11 files checked, 15 modules in the logic layer's import graph
+ok purity (159 checks)
+== tests/rng.test.js
+ok rng (6 checks)
+== tests/runsim.test.js
+  code  home   end    boss     finale     units    bonus    sim s  events  digest
+  1-1   10     10     -        -          0        0        38.0   896     50d6d841
+  2-1   17     17     killed   -          0        0        46.1   1619    a618f28f
+  3-1   18     18     killed   -          0        0        51.9   2301    9d212e1e
+  3-2   21     21     killed   -          0        0        47.6   2192    7101c077
+  4-1   23     23     killed   -          0        0        55.0   2814    17c0f287
+  a different seed changed 5 of 5 levels
+ok runsim (21 checks)
+== tests/save.test.js
+ok save (13 checks)
+== jsc: 8 passed, 0 failed

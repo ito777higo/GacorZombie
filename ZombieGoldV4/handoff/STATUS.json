@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "status": "awaiting_mobile_source_upload",
-  "source_in_this_commit": false,
+  "status": "ready_for_primary_validation",
+  "source_in_this_commit": true,
   "primary_received": false,
   "repository": "ito777higo/GacorZombie",
   "handoff_branch": "codex/mobile-zombiegold-handoff",
@@ -11,7 +11,7 @@
   "mobile_thread_id": "01a16eda-ab79-7ad3-b331-3f5f35acfddc",
   "primary_thread_id": "01a16ea7-aa0f-74c2-9c6e-7a3bb6e40e04",
   "coordinator_thread_id": "01a16e6d-2b20-77c3-aea9-b9c4b822a0ab",
-  "evidence_basis": "mobile_task_execution_records_not_a_new_source_checkout",
+  "evidence_basis": "current_v41_source_and_assets_in_containing_commit_with_offline_staged_browser_validation",
   "reported_verification": {
     "v4_full_level_wins": 5,
     "v4_level_count": 5,
@@ -30,8 +30,34 @@
     "sha256": "1a5437d5242b0792433825fd2e8369d2b625438e5a17a50f825ce40f1e37a4c0"
   },
   "next_actions": [
-    "mobile_publish_source_assets_tests_and_sha256_manifest",
-    "coordinator_fetch_and_verify_exact_uploaded_commit",
-    "primary_read_same_commit_and_run_independently"
-  ]
+    "Publisher retrieve exact published SHA independently and verify manifest/browser",
+    "Primary computer read RECEIVE_PRIMARY.txt, checkout same complete SHA and validate independently"
+  ],
+  "updated_at_utc": "2026-10-26T11:14:25.001104+00:00",
+  "source_manifest_sha256": "d987a1ca75500109c5e902230ce4e7c821de81b3eb252013aebcd6d966546950",
+  "source_manifest_files": 447,
+  "source_manifest_bytes": 51457749,
+  "publication_base_commit": "6f391dfa21da19cf9044360d40f193ed68f9b1ee",
+  "publication_scope": "complete V4.1 source/assets/tools/tests/licenses; identical pinned dependency bundling only; no gameplay or art changes",
+  "verification_in_this_commit": {
+    "logic_groups": 8,
+    "logic_checks": 642,
+    "logic_pass": true,
+    "real_mouse_keyboard_first_level_people": 3,
+    "stable_door_button": true,
+    "lab_unlock_reload_and_enter_level_five": true,
+    "offline_dependencies": true,
+    "original_assets_identical": 317,
+    "loaded_art_response_hashes_identical": 140,
+    "page_and_http_errors": 0,
+    "all_five_levels_replayed": false,
+    "hardware_vibration_verified": false
+  },
+  "known_issues": [
+    "Primary computer has not independently received this commit",
+    "LocalStorage is browser/origin-specific and not transferred by Git",
+    "Hardware haptics and physical mobile performance not verified",
+    "V4.1 all-five-level replay not repeated"
+  ],
+  "run_instructions": "handoff/RUN_AND_VERIFY.txt"
 }

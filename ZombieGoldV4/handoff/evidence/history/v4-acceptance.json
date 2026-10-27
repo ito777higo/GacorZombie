@@ -1,0 +1,17 @@
+{
+  "logic": {
+    "groups": 8,
+    "checks": 642,
+    "passed": true
+  },
+  "realPackageRuns": 5,
+  "wins": 5,
+  "pageErrors": [],
+  "httpErrors": [],
+  "packagePass": true,
+  "sourceMatchesZip": true,
+  "originalGateFishChanged": [],
+  "edgesPass": true,
+  "artInputAudioPass": true,
+  "abandonAndBoardingFailurePass": true
+}

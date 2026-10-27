@@ -1,0 +1,97 @@
+
+jiakechong202606.png
+size: 128,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm_l
+  rotate: false
+  xy: 66, 57
+  size: 10, 8
+  orig: 10, 8
+  offset: 0, 0
+  index: -1
+arm_r
+  rotate: false
+  xy: 78, 61
+  size: 10, 8
+  orig: 10, 8
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 2, 44
+  size: 32, 36
+  orig: 32, 36
+  offset: 0, 0
+  index: -1
+hand_l
+  rotate: true
+  xy: 78, 86
+  size: 11, 19
+  orig: 11, 19
+  offset: 0, 0
+  index: -1
+hand_r
+  rotate: false
+  xy: 108, 107
+  size: 11, 19
+  orig: 11, 19
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 78, 99
+  size: 28, 27
+  orig: 28, 27
+  offset: 0, 0
+  index: -1
+leg_l
+  rotate: false
+  xy: 36, 51
+  size: 13, 29
+  orig: 13, 29
+  offset: 0, 0
+  index: -1
+leg_r
+  rotate: false
+  xy: 51, 51
+  size: 13, 29
+  orig: 13, 29
+  offset: 0, 0
+  index: -1
+mouth_l
+  rotate: false
+  xy: 66, 67
+  size: 10, 13
+  orig: 10, 13
+  offset: 0, 0
+  index: -1
+mouth_r
+  rotate: false
+  xy: 78, 71
+  size: 11, 13
+  orig: 11, 13
+  offset: 0, 0
+  index: -1
+shadow
+  rotate: false
+  xy: 2, 82
+  size: 74, 44
+  orig: 74, 44
+  offset: 0, 0
+  index: -1
+wing_l
+  rotate: false
+  xy: 2, 2
+  size: 24, 40
+  orig: 24, 40
+  offset: 0, 0
+  index: -1
+wing_r
+  rotate: false
+  xy: 28, 2
+  size: 24, 40
+  orig: 24, 40
+  offset: 0, 0
+  index: -1
